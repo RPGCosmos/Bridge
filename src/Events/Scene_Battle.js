@@ -4,7 +4,7 @@ Scene_Battle.prototype.start = function () {
   BattleManager.playBattleBgm();
   BattleManager.startBattle();
 
-  window.dispatchEvent(new CustomEvent('Scene_Battle.start', {
+  EventBus.dispatchEvent(new CustomEvent('Scene_Battle.start', {
     detail: {
       battle: this
     }

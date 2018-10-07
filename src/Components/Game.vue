@@ -3,8 +3,8 @@
 
 <script>
 
-    import {Socket} from "Lib/phoenix";
-    import Player from "Game/Player";
+    // import {Socket} from "Lib/phoenix";
+    // import Player from "Game/Player";
 
     export default {
         mounted() {
@@ -17,22 +17,30 @@
 
             SceneManager.run(Scene_Boot);
 
-            let socket = new Socket("ws://cosmos.axxim.net:8101/socket", {
-                logger: (kind, msg, data) => {
-                    console.log(`${kind}: ${msg}`, data)
-                },
-                params: {
-                    player_id: PLAYER_ID,
-                    username: username
-                }
-            });
-            socket.connect();
+            let conn = new WebSocket("ws://localhost:8101/socket");
+            conn.onclose = function (evt) {
+                alert("Server closed the connection")
+            };
+            conn.onmessage = function (evt) {
+                console.log(evt)
+            };
 
-            let player = new Player(PLAYER_ID, username);
-            player.setSocket(socket);
-            player.registerGameHooks();
-            // player.registerServerHooks();
-            player.connect();
+            // let socket = new Socket("ws://localhost:8101/socket", {
+            //     logger: (kind, msg, data) => {
+            //         console.log(`${kind}: ${msg}`, data)
+            //     },
+            //     params: {
+            //         player_id: PLAYER_ID,
+            //         username: username
+            //     }
+            // });
+            // socket.connect();
+
+            // let player = new Player(PLAYER_ID, username);
+            // player.setSocket(socket);
+            // player.registerGameHooks();
+            // // player.registerServerHooks();
+            // player.connect();
 
         }
     }

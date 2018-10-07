@@ -1,4 +1,6 @@
 
+const debounceQueue = [];
+
 /**
  * This allows for easy hooking of RPG Maker MV events.
  * While not having to copy them to your own commands!
@@ -28,3 +30,4 @@ export default function hooker(className, methodName, before, after) {
         }
     }
 }
+

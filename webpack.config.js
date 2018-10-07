@@ -5,8 +5,8 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
   entry: "./src/main.js",
   output: {
-    path: path.resolve("../mv-mmo-test/js/plugins"),
-    filename: 'Bifrost.js'
+    path: path.resolve("../example-mmo/js/plugins"),
+    filename: 'RPGCosmos_Bridge.js'
   },
   devtool: "inline-source-map",
     resolve: {

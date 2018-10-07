@@ -1,4 +1,4 @@
-import Types from "../types";
+import EventBus from "../bus";
 
 import MapManager from "./MapManager";
 
@@ -26,24 +26,24 @@ export default class Player {
 
   registerGameHooks() {
     let player = this;
-    window.addEventListener('Game_Player.refresh', function (e) {
+    EventBus.addEventListener('Game_Player.refresh', function (e) {
       console.info('Game_Player.refresh', e.detail);
       player.characterIndex = e.detail.characterIndex;
       player.characterName = e.detail.characterName;
       player.handleRefresh(player.characterIndex, player.characterName);
     });
-    window.addEventListener('Game_Player.moveByInput.beforeMove', function (e) {
+    EventBus.addEventListener('Game_Player.moveByInput.beforeMove', function (e) {
       console.info('Game_Player.moveByInput.beforeMove', e.detail);
     });
-    window.addEventListener('Game_Player.moveByInput.afterMove', function (e) {
+    EventBus.addEventListener('Game_Player.moveByInput.afterMove', function (e) {
       console.info('Game_Player.moveByInput.afterMove', e.detail);
       player.handleMove(e.detail);
     });
-    window.addEventListener('Scene_Map.create', function (e) {
+    EventBus.addEventListener('Scene_Map.create', function (e) {
       console.info('Scene_Map.create', e.detail);
       player.handleMapChange(e.detail.map_id);
     });
-    window.addEventListener('Scene_Map.stop', function (e) {
+    EventBus.addEventListener('Scene_Map.stop', function (e) {
       console.info('Scene_Map.stop', e.detail);
       // TODO: Handle player despawn here
       //player.handleMapChange(e.detail.map_id)

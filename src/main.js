@@ -4,16 +4,18 @@
  */
 
 import "./hooker";
+import "./bus";
+import "./debug";
 
-import "./Lib/OrangeCustomEvents";
-import "./Lib/CmdInp";
+// import "./Lib/OrangeCustomEvents";
+// import "./Lib/CmdInp";
 
-import "./Events/Game_Party";
+// import "./Events/Game_Party";
 import "./Events/Game_Player";
-import "./Events/Scene_Battle";
-import "./Events/Scene_Map";
-import "./Events/Scene_Menu";
-import "./Events/Scene_Boot";
+// import "./Events/Scene_Battle";
+// import "./Events/Scene_Map";
+// import "./Events/Scene_Menu";
+// import "./Events/Scene_Boot";
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -60,7 +62,7 @@ import Game from './Components/Game.vue';
         }
     ];
     const router = new VueRouter({
-        routes // short for `routes: routes`
+        routes 
     });
 
     const app = new Vue({

@@ -1,4 +1,4 @@
-# mv-bifrost
+# RPG Cosmos Bridge
 
 A MMO engine prototype for RPG Maker MV
 

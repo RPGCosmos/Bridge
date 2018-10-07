@@ -6,7 +6,7 @@ Scene_Map.prototype.create = function() {
   var mapId = this._transfer ? $gamePlayer.newMapId() : $gameMap.mapId();
   DataManager.loadMapData(mapId);
 
-  window.dispatchEvent(new CustomEvent('Scene_Map.create', {
+  EventBus.dispatchEvent(new CustomEvent('Scene_Map.create', {
     detail: {
       map_id: mapId
     }
@@ -14,7 +14,7 @@ Scene_Map.prototype.create = function() {
 };
 
 Scene_Map.prototype.stop = function() {
-  window.dispatchEvent(new CustomEvent('Scene_Map.stop', {
+  EventBus.dispatchEvent(new CustomEvent('Scene_Map.stop', {
     detail: {
       map_id: $gameMap.mapId()
     }
